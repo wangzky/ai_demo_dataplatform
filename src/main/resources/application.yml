@@ -1,0 +1,56 @@
+server:
+  port: 9999
+spring:
+  profiles:
+    active: local
+
+## swagger
+swagger:
+  basePackage: "com.ai.dataplatform"
+  title : "企业级数据采集与稽核平台 api"
+  description : "企业级数据采集与稽核平台 api"
+  termsOfServiceUrl : "/"
+  contact : "王泽坤"
+  version : "1.0.0"
+
+## 文件上传路径
+file:
+  uploadPath: c:/DataFloder
+  uploadPath2: /var/datafloder
+
+## 开发
+---
+spring:
+  profiles: local
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/rptdb?useUnicode=true&&characterEncoding=UTF-8&connectTimeout=1000&autoReconnect=true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 1230
+  jpa:
+     properties:
+       hibernate:
+         hbm2ddl:
+           auto: update
+     show-sql: true
+  mvc:
+     static-path-pattern: /**
+
+
+## 生产
+---
+spring:
+  profiles: prod
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/serverless?useUnicode=true&&characterEncoding=UTF-8&connectTimeout=1000&autoReconnect=true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
+  jpa:
+     properties:
+       hibernate:
+         hbm2ddl:
+           auto: update
+     show-sql: true
+  mvc:
+     static-path-pattern: /**
