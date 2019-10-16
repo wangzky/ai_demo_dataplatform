@@ -1,11 +1,13 @@
 package com.ai.dataplatform.service;
 
+import com.ai.dataplatform.dao.ModelContentRepository;
 import com.ai.dataplatform.dao.ModularAttrRepository;
 import com.ai.dataplatform.dao.ModularItemRepository;
 import com.ai.dataplatform.dto.DataItemListQry;
 import com.ai.dataplatform.dto.ModularDto;
 import com.ai.dataplatform.dto.MyResp;
 import com.ai.dataplatform.dto.PageResult;
+import com.ai.dataplatform.entity.ModelContent;
 import com.ai.dataplatform.entity.ModularAttr;
 import com.ai.dataplatform.entity.ModularItem;
 import com.ai.dataplatform.util.RandomUtil;
@@ -40,6 +42,9 @@ public class ModularService {
 
     @Autowired
     ModularAttrRepository modularAttrRepository;
+
+    @Autowired
+    ModelContentRepository modelContentRepository;
 
 
     public MyResp modularListQry(DataItemListQry qry){
@@ -115,6 +120,14 @@ public class ModularService {
                 continue;
             }
             modularItemRepository.save(modularItem);
+
+            List<ModelContent> modularLists = modelContentRepository.findAllByModularId(modularId);
+            if (modularLists.size()>0){
+                for (ModelContent modelContent : modularLists){
+                    modelContent.setModularName(modularItem.getModularName());
+                }
+                modelContentRepository.saveAll(modularLists);
+            }
 
             List<ModularAttr> modularAttrs = modularDto.getModularAttrs();
             for (ModularAttr modularAttr: modularAttrs){

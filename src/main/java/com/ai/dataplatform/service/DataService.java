@@ -74,6 +74,7 @@ public class DataService {
             Map m = new HashMap();
             m.put("title",modularAttr.getModularAttrNotes());
             m.put("dataIndex",modularAttr.getModularAttrName());
+            m.put("dataType",modularAttr.getModularAttrType());
 //            m.put(modularAttr.getModularAttrName() , modularAttr.getModularAttrNotes());
             header.add(m);
         }

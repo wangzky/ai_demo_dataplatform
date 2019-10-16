@@ -34,5 +34,6 @@ public interface ModelContentRepository extends JpaRepository<ModelContent, Long
     @Query(value = "SELECT COUNT(DISTINCT modular_id ) FROM model_content WHERE 1=1 and model_id = :modelId  AND modular_id IN (SELECT modular_id FROM modular_item)" ,nativeQuery = true)
     Integer findAllMudularSizeTrueByModelId(@Param(value = "modelId")Long modelId);
 
+    List<ModelContent> findAllByModularId(Long modularId);
 
 }
