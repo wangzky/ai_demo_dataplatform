@@ -18,6 +18,9 @@ file:
   uploadPath: c:/DataFloder
   uploadPath2: /var/datafloder
 
+logging:
+  file: log.log
+
 ## 开发
 ---
 spring:
@@ -42,7 +45,7 @@ spring:
 spring:
   profiles: prod
   datasource:
-      url: jdbc:mysql://127.0.0.1:3306/serverless?useUnicode=true&&characterEncoding=UTF-8&connectTimeout=1000&autoReconnect=true
+      url: jdbc:mysql://127.0.0.1:3306/dataplatform?useUnicode=true&&characterEncoding=UTF-8&connectTimeout=1000&autoReconnect=true
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: root
