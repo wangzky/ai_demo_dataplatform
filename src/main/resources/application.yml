@@ -2,7 +2,7 @@ server:
   port: 9999
 spring:
   profiles:
-    active: local
+    active: prod
 
 ## swagger
 swagger:
@@ -45,7 +45,7 @@ spring:
 spring:
   profiles: prod
   datasource:
-      url: jdbc:mysql://127.0.0.1:3306/dataplatform?useUnicode=true&&characterEncoding=UTF-8&connectTimeout=1000&autoReconnect=true
+      url: jdbc:mysql://127.0.0.1:3306/dataplatform?serverTimezone=GMT%2B8&characterEncoding=utf-8
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: root
