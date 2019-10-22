@@ -21,7 +21,7 @@ public class DataListQry {
     @ApiModelProperty(value = "模块ID")
     private Long modularId;
     @ApiModelProperty(value = "数据项ID")
-    private Long dataItemId;
+    private Long dataItemId = 0L;
     @ApiModelProperty(value = "页数 ，默认1")
     private int page = 1;
     @ApiModelProperty(value = "页大小 ， 默认10")

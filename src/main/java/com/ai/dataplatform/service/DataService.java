@@ -14,7 +14,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.thymeleaf.util.MapUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

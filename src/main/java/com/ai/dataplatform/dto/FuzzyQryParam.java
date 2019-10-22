@@ -16,11 +16,12 @@ import lombok.Data;
  */
 @Data
 public class FuzzyQryParam {
-
-    @ApiModelProperty(value = "模块名称")
-    private String modularName;
-    @ApiModelProperty(value = "模块key名称")
-    private String modularAttrName;
+    @ApiModelProperty(value = "查询类型")
+    private FuzzyQryTypeEnum fuzzyQryType;
+    @ApiModelProperty(value = "值")
+    private String keyWord;
+    @ApiModelProperty(value = "是否过滤文件 默认不过滤 ， 1 过滤")
+    private String isFile = "0";
     @ApiModelProperty(value = "页数 ，默认1")
     private int page = 1;
     @ApiModelProperty(value = "页大小 ， 默认10")
