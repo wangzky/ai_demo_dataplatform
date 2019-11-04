@@ -1,11 +1,11 @@
 package com.ai.dataplatform.controller;
 
+import com.ai.dataplatform.dto.DataItemListQry;
 import com.ai.dataplatform.dto.FuzzyQryParam;
 import com.ai.dataplatform.dto.MyResp;
 import com.ai.dataplatform.service.DataAuditService;
 import com.ai.dataplatform.service.FuzzyQryService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +42,14 @@ public class OtherController {
 
     @PostMapping(value = "/dataAudit")
     @ApiOperation(value = "数据稽核", notes = "数据稽核")
-    public MyResp dataAudit(){
-        return dataAuditService.dataAudit();
+    public MyResp dataAudit(@RequestBody DataItemListQry qry){
+        return dataAuditService.dataAudit(qry);
+    }
+
+    @GetMapping(value = "/dataAuditForFailureByModelId")
+    @ApiOperation(value = "根据模型id查询失效模块", notes = "根据模型id查询失效模块")
+    public MyResp dataAuditForFailureByModelId(@RequestParam Long modelId){
+        return dataAuditService.dataAuditForFailureByModelId(modelId);
     }
 
     @GetMapping(value = "/test")

@@ -36,4 +36,7 @@ public interface ModelContentRepository extends JpaRepository<ModelContent, Long
 
     List<ModelContent> findAllByModularId(Long modularId);
 
+    @Query(value = "SELECT * FROM model_content WHERE 1=1 AND model_id = :modelId  AND modular_id NOT IN (SELECT modular_id FROM modular_item)",nativeQuery = true)
+    List<ModelContent> findFailureByModelId(@Param(value = "modelId") Long modelId);
+
 }
